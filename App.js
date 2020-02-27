@@ -81,6 +81,10 @@ function DetailsScreen({route, navigation}) {
         title="Go back to first screen in stack"
         onPress={() => navigation.popToTop()}
       />
+      <Button
+        title="Update the title"
+        onPress={() => navigation.setOptions({title: 'Updated!'})}
+      />
     </View>
   );
 }
