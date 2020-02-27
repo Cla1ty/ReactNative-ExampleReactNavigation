@@ -94,20 +94,20 @@ const Stack = createStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#f4511e',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}>
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{
-            title: 'My home',
-            headerStyle: {
-              backgroundColor: '#f4511e',
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
-          }}
+          options={{title: 'My home'}}
         />
         <Stack.Screen
           name="CreatePost"
