@@ -30,7 +30,7 @@ function DetailsScreen({route, navigation}) {
       <Text>otherParam: {JSON.stringify(otherParam)}</Text>
       <Button
         title="Go to Details... again"
-        onPress={() => 
+        onPress={() =>
           navigation.push('Details', {
             itemId: Math.floor(Math.random() * 100),
           })
@@ -57,7 +57,11 @@ function App() {
           component={HomeScreen}
           options={{title: 'Overview'}}
         />
-        <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen
+          name="Details"
+          component={DetailsScreen}
+          initialParams={{itemId: 42, otherParam: 'Other'}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
