@@ -11,6 +11,14 @@ function HomeScreen() {
   );
 }
 
+function DetailsScreen() {
+  return (
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Text>Details Screen</Text>
+    </View>
+  );
+}
+
 const Stack = createStackNavigator();
 
 function App() {
@@ -22,6 +30,7 @@ function App() {
           component={HomeScreen}
           options={{title: 'Overview'}}
         />
+        <Stack.Screen name="Details" component={DetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
