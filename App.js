@@ -90,7 +90,7 @@ function App() {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{title: 'Overview'}}
+          options={{title: 'My home'}}
         />
         <Stack.Screen name="CreatePost" component={CreatePostScreen} />
         <Stack.Screen
