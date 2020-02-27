@@ -25,7 +25,11 @@ function HomeScreen({navigation, route}) {
       />
       <Button
         title="Create post"
-        onPress={() => navigation.navigate('CreatePost')}
+        onPress={() => {
+          navigation.navigate('CreatePost', {
+            name: 'Create Post',
+          });
+        }}
       />
       <Text style={{margin: 10}}>Post: {route.params?.post}</Text>
     </View>
@@ -92,7 +96,11 @@ function App() {
           component={HomeScreen}
           options={{title: 'My home'}}
         />
-        <Stack.Screen name="CreatePost" component={CreatePostScreen} />
+        <Stack.Screen
+          name="CreatePost"
+          component={CreatePostScreen}
+          options={({route}) => ({title: route.params.name})}
+        />
         <Stack.Screen
           name="Details"
           component={DetailsScreen}
