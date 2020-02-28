@@ -158,7 +158,7 @@ function MainStackScreen() {
 
 function RootStackScreen() {
   return (
-    <RootStack.Navigator>
+    <RootStack.Navigator mode="modal">
       <RootStack.Screen
         name="Main"
         component={MainStackScreen}
