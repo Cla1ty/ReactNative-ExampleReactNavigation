@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Button, View, Text, TextInput} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 function HomeScreen({navigation, route}) {
   const [count, setCount] = React.useState(0);
@@ -104,6 +105,14 @@ function DetailsScreen({route, navigation}) {
   );
 }
 
+function SettingsScreen() {
+  return (
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <Text>Settings!</Text>
+    </View>
+  );
+}
+
 function ModalScreen({navigation}) {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
@@ -113,12 +122,11 @@ function ModalScreen({navigation}) {
   );
 }
 
-const MainStack = createStackNavigator();
-const RootStack = createStackNavigator();
+const HomeStack = createStackNavigator();
 
-function MainStackScreen() {
+function HomeStackScreen() {
   return (
-    <MainStack.Navigator
+    <HomeStack.Navigator
       screenOptions={{
         headerStyle: {
           backgroundColor: '#f4511e',
@@ -128,7 +136,7 @@ function MainStackScreen() {
           fontWeight: 'bold',
         },
       }}>
-      <MainStack.Screen
+      <HomeStack.Screen
         name="Home"
         component={HomeScreen}
         options={{
@@ -142,26 +150,39 @@ function MainStackScreen() {
           ),
         }}
       />
-      <MainStack.Screen
+      <HomeStack.Screen
         name="CreatePost"
         component={CreatePostScreen}
         options={({route}) => ({title: route.params.name})}
       />
-      <MainStack.Screen
+      <HomeStack.Screen
         name="Details"
         component={DetailsScreen}
         initialParams={{itemId: 42, otherParam: 'Other'}}
       />
-    </MainStack.Navigator>
+    </HomeStack.Navigator>
   );
 }
+
+const Tab = createBottomTabNavigator();
+
+function MainTabScreen() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeStackScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+    </Tab.Navigator>
+  );
+}
+
+const RootStack = createStackNavigator();
 
 function RootStackScreen() {
   return (
     <RootStack.Navigator mode="modal">
       <RootStack.Screen
         name="Main"
-        component={MainStackScreen}
+        component={MainTabScreen}
         options={{headerShown: false}}
       />
       <RootStack.Screen name="MyModal" component={ModalScreen} />
