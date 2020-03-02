@@ -106,10 +106,15 @@ function DetailsScreen({route, navigation}) {
   );
 }
 
-function SettingsScreen() {
+function SettingsScreen({navigation}) {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <Text>Settings!</Text>
+      <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
+      <Button
+        title="Go to Home Detail"
+        onPress={() => navigation.navigate('Details')}
+      />
     </View>
   );
 }
